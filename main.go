@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/kyokomi/emoji/v2"
 )
@@ -20,31 +21,15 @@ func main() {
 	fmt.Println("First propostion:")
 	propostionOne()
 	userGuess := getUserInput()
-	userGuess2 := getUserInput2()
-	userGuess3 := getUserInput3()
 
 	if userGuess == answer {
 		fmt.Println("Congratulation! You win 3pts")
+		os.Exit(3)
 	} else if userGuess != answer {
 		fmt.Println("nope, try again.")
 		propostionTwo()
 		getUserInput2()
-	}
-
-	if userGuess2 == answer {
-		fmt.Println("Nice, you win 2pts")
-
-	} else if userGuess2 != answer {
-		fmt.Println("Nope again... last try")
-		propostionThree()
-		getUserInput3()
-	}
-	if userGuess3 == answer {
-		fmt.Println("Finally you get it! You win 1pt")
-
-	} else if userGuess3 != answer {
-		fmt.Printf("No.. that's bad, the answer was %v!\n", answer)
-
+		try2(userGuess2)
 	}
 }
 
@@ -85,4 +70,27 @@ func propostionTwo() {
 
 func propostionThree() {
 	emoji.Println(":airplane::man_running::money_with_wings:")
+}
+
+func try2(userGuess2 string) {
+	if userGuess2 == answer {
+		fmt.Println("Nice, you win 2pts")
+		os.Exit(3)
+	} else if userGuess2 != answer {
+		fmt.Println("Nope again... last try")
+		propostionThree()
+		getUserInput3()
+		try3()
+	}
+}
+
+func try3(userGuess3 string) {
+	if userGuess3 == answer {
+		fmt.Println("Finally you get it! You win 1pt")
+		os.Exit(3)
+
+	} else if userGuess3 != answer {
+		fmt.Printf("No.. that's bad, the answer was %v!\n", answer)
+		os.Exit(3)
+	}
 }
