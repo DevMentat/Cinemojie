@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
-
 	"github.com/kyokomi/emoji/v2"
 )
 
@@ -24,12 +22,12 @@ func main() {
 
 	if userGuess == answer {
 		fmt.Println("Congratulation! You win 3pts")
-		os.Exit(3)
 	} else if userGuess != answer {
 		fmt.Println("nope, try again.")
 		propositionTwo()
-		getUserInput2()
+		userGuess2 := getUserInput2()
 		try2(userGuess2)
+
 	}
 }
 
@@ -75,22 +73,19 @@ func propositionThree() {
 func try2(userGuess2 string) {
 	if userGuess2 == answer {
 		fmt.Println("Nice, you win 2pts")
-		os.Exit(3)
 	} else if userGuess2 != answer {
 		fmt.Println("Nope again... last try")
 		propositionThree()
-		getUserInput3()
-		try3()
+		userGuess3 := getUserInput3()
+		try3(userGuess3)
 	}
 }
 
 func try3(userGuess3 string) {
 	if userGuess3 == answer {
 		fmt.Println("Finally you get it! You win 1pt")
-		os.Exit(3)
 
 	} else if userGuess3 != answer {
 		fmt.Printf("No.. that's bad, the answer was %v!\n", answer)
-		os.Exit(3)
 	}
 }
