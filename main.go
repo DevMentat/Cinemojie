@@ -10,16 +10,16 @@ import (
 // The Project is a quiz for guessing movie with emojis, you have three guesses. Maybe a point system. So I need a loop.
 // I need to
 
-const numberofguesses int = 3
+const numberOfGuesses int = 3
 
-var gamename = "Cinemojie"
+var gameName = "Cinemojie"
 var answer = "catchmeifyoucan"
 
 func main() {
 
 	greetUsers()
-	fmt.Println("First propostion:")
-	propostionOne()
+	fmt.Println("First proposition:")
+	propositionOne()
 	userGuess := getUserInput()
 
 	if userGuess == answer {
@@ -27,7 +27,7 @@ func main() {
 		os.Exit(3)
 	} else if userGuess != answer {
 		fmt.Println("nope, try again.")
-		propostionTwo()
+		propositionTwo()
 		getUserInput2()
 		try2(userGuess2)
 	}
@@ -36,7 +36,7 @@ func main() {
 /////// FUNKY ZONE //////////
 
 func greetUsers() {
-	fmt.Printf("Welcome to the %v game!\n The rule is simple, you have %v guesses for each movie.\n", gamename, numberofguesses)
+	fmt.Printf("Welcome to the %v game!\n The rule is simple, you have %v guesses for each movie.\n", gameName, numberOfGuesses)
 }
 
 func getUserInput() string {
@@ -60,15 +60,15 @@ func getUserInput3() string {
 	return userGuess3
 }
 
-func propostionOne() {
+func propositionOne() {
 	emoji.Println(":airplane:")
 }
 
-func propostionTwo() {
+func propositionTwo() {
 	emoji.Println(":airplane::man_running:")
 }
 
-func propostionThree() {
+func propositionThree() {
 	emoji.Println(":airplane::man_running::money_with_wings:")
 }
 
@@ -78,7 +78,7 @@ func try2(userGuess2 string) {
 		os.Exit(3)
 	} else if userGuess2 != answer {
 		fmt.Println("Nope again... last try")
-		propostionThree()
+		propositionThree()
 		getUserInput3()
 		try3()
 	}
