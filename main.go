@@ -6,7 +6,7 @@ import (
 )
 
 // The Project is a quiz for guessing movie with emojis, you have three guesses. Maybe a point system. So I need a loop.
-// I need to
+//TODO Create a list of proposition
 
 const numberOfGuesses int = 3
 
@@ -14,20 +14,23 @@ var gameName = "Cinemojie"
 var answer = "catchmeifyoucan"
 
 func main() {
+	for {
+		greetUsers()
+		//TODO Create a function for the first proposition
+		fmt.Println("First proposition:")
+		propositionOne()
+		userGuess := getUserInput()
 
-	greetUsers()
-	fmt.Println("First proposition:")
-	propositionOne()
-	userGuess := getUserInput()
-
-	if userGuess == answer {
-		fmt.Println("Congratulation! You win 3pts")
-	} else if userGuess != answer {
-		fmt.Println("nope, try again.")
-		propositionTwo()
-		userGuess2 := getUserInput2()
-		try2(userGuess2)
-
+		if userGuess == answer {
+			fmt.Println("Congratulation! You win 3pts")
+		} else if userGuess != answer {
+			fmt.Println("nope, try again.")
+			propositionTwo()
+			userGuess2 := getUserInput2()
+			try2(userGuess2)
+			//NEW PROPOSITION CHANGE THE VALUE OF answer, propo1,2,3.
+			shuffle()
+		}
 	}
 }
 
@@ -58,18 +61,6 @@ func getUserInput3() string {
 	return userGuess3
 }
 
-func propositionOne() {
-	emoji.Println(":airplane:")
-}
-
-func propositionTwo() {
-	emoji.Println(":airplane::man_running:")
-}
-
-func propositionThree() {
-	emoji.Println(":airplane::man_running::money_with_wings:")
-}
-
 func try2(userGuess2 string) {
 	if userGuess2 == answer {
 		fmt.Println("Nice, you win 2pts")
@@ -88,4 +79,16 @@ func try3(userGuess3 string) {
 	} else if userGuess3 != answer {
 		fmt.Printf("No.. that's bad, the answer was %v!\n", answer)
 	}
+}
+
+func propositionOne() {
+	emoji.Println(":airplane:")
+}
+
+func propositionTwo() {
+	emoji.Println(":airplane: :man_running:")
+}
+
+func propositionThree() {
+	emoji.Println(":airplane: :man_running::money_with_wings:")
 }
